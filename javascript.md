@@ -108,3 +108,126 @@ One important reason to use an `IIFE` is to keep `variables` private to the func
 
 console.log(message); // ReferenceError
 ```
+
+## Class
+In `JavaScript`, a `class` is a blueprint for creating objects that share the same `properties` (data) and `methods` (functions). Classes are especially useful when you want to create multiple objects that behave similarly without repeating code.
+
+```javascript
+class User {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+```
+
+- `class User` defines a class called User.
+- `constructor()` is a special method that runs when you create a new object.
+- `this.name` is a property belonging to the object being created.
+- `this.age` is another property belonging to that object.
+
+Now we can create users from our class. The `new` keyword creates a new instance of the class:
+
+```javascript
+const user1 = new User("John", 25);
+const user2 = new User("Sarah", 30);
+
+console.log(user1.name); // John
+console.log(user2.name); // Sarah
+```
+
+Classes become more useful when you add `methods`. A `method` is simply a `function` that belongs to the class and can be used by its objects.
+
+```javascript
+class User {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    greet() {
+        return `Hello, my name is ${this.name}`;
+    }
+
+    getAge() {
+        return this.age;
+    }
+}
+```
+
+We can use the `methods` of a class:
+
+```javascript
+const user1 = new User("John", 25);
+
+console.log(user1.greet());     // Hello, my name is John
+console.log(user1.getAge());    // 25
+```
+
+Notice that we don't need to write `function` when defining methods inside a class.
+
+Imagine you're building a banking application. This is a more practical example.
+
+```javascript
+class BankAccount {
+    constructor(owner, balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+
+    deposit(amount) {
+        this.balance += amount;
+    }
+
+    withdraw(amount) {
+        if (amount > this.balance) {
+            return "Insufficient funds";
+        }
+        this.balance -= amount;
+    }
+
+    getBalance() {
+        return this.balance;
+    }
+}
+```
+
+Now let's create an account and interact with it.
+
+```javascript
+const account = new BankAccount("John", 1000);
+
+account.deposit(500);
+
+console.log(account.getBalance());    // 1500
+
+account.withdraw(200);
+
+console.log(account.getBalance());    // 1300
+```
+
+For example, you could have a `Vehicle` class and then create a `Car` class that inherits from it using the `extends` keyword:
+
+```javascript
+class Vehicle {
+    constructor(brand) {
+        this.brand = brand;
+    }
+
+    start() {
+        console.log("Vehicle started");
+    }
+}
+
+// Create a Car class thar inherits methods and properties from the Vehicle class
+class Car extends Vehicle {
+    drive() {
+        console.log(`${this.brand} is driving`);
+    }
+}
+
+const car = new Car("BMW");
+
+car.start();     // Vehicle started
+car.drive();     // BMW is driving
+```
