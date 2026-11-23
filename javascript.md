@@ -7,6 +7,38 @@
 </html>
 ```
 
+## Variables
+A `variable` in `JavaScript` is used to store data that you can access and use later in your code. `JavaScript` has three keywords for declaring variables:
+
+- `let`
+- `const`
+- `var`
+
+Use `let` when you expect the value to change. Use `const` when you don't want the variable to reference a different value. Before modern JavaScript, developers commonly used `var`. `JavaScript` is **dynamically typed**, meaning you don't have to specify a variable's `data type`.
+
+**The Recommendation:** Prefer `const` by default, use `let` when reassignment is needed, and generally avoid `var` in modern JavaScript.
+
+```javascript
+// Declare a variable using the legacy var keyword
+var name = "Dan";
+// Declare a variable using let as this value may change
+let age = 41;
+// Declare a variable using const (recommended) and this value will not change
+const isMale = true;
+```
+
+### What does block scope mean?
+A block is code enclosed in curly brackets `{}`. A variable inside of the brackets is block scoped. The variable message only exists inside the if block.
+
+```javascript
+if (true) {
+    let message = "Hello";
+    console.log(message);     // Hello
+}
+
+console.log(message);     // ReferenceError, the variable cannot be accessed outside of the block
+```
+
 ## Functions
 `Functions` are reusable blocks of code. A `function` in `JavaScript` is usually declared with the `function` keyword followed by the name of the function, called the `identifier`.
 
@@ -107,6 +139,14 @@ One important reason to use an `IIFE` is to keep `variables` private to the func
 })();
 
 console.log(message); // ReferenceError
+```
+
+Sometimes we pass global objects such as `window` and `document` into the function.
+
+```javascript
+(function (window, document) {
+    // Code is executed here.
+})(window, document);
 ```
 
 ## Class
