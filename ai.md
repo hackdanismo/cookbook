@@ -1,5 +1,18 @@
 # Artificial Intelligence
 
+- **AI agent:** The system that reasons, plans and performs tasks.
+- **MCP:** The connection that gives the agent access to external tools and information.
+- **MCP server**: The software that exposes those tools to the agent.
+
+For work with `Webflow`, `Codex` and website quality assurance, you could potentially build an agent that uses:
+
+- **Webflow MCP** to inspect and manage website content.
+- **Bitbucket** integration to review or modify source code.
+- **Browser automation** to check accessibility and broken links.
+- **Email integration** to distribute reports.
+
+The key distinction is that `MCP` provides connectivity; the agent still needs appropriate tools and instructions to perform the actual checks.
+
 ## Large Language Model (LLM)
 An `LLM` primary generates responses. Think of an `LLM` like a "brain" that understands information, reasons and generates responses. An `LLM` is a model. An example of an `LLM` is: `GPT-6`. Other examples include:
 
@@ -64,3 +77,14 @@ The agent itself isn't a permanently running program inside `AGENTS.md`. `Codex`
 | Component validation | After a code change, via CI | Check component definitions and templates |
 | Page creation | On request | Generate a draft page from your instructions |
 | Site audit | Every Monday | Check for broken component references |
+
+## MCP
+`MCP` stands for `Model Context Protocol`. It's a standard way of connecting AI tools like `ChatGPT` and `Codex` to external applications such as `Webflow`, `Figma`, `GitHub` and `databases`. Think of `MCP` as a universal connector that lets AI interact with other software, rather than just talk about it. Without MCP, the LLM can explain the steps, but it cannot directly access the tool or project. 
+
+As an example of using the `Webflow MCP`, you could instead ask the `LLM`:
+
+```
+Find all pages in my Webflow website that are missing meta descriptions and suggest improvements.
+```
+
+`Codex` can retrieve supported information directly from `Webflow`, analyse it and generate recommendations. Depending on the tools and permissions available, it may also be able to make changes.
